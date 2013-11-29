@@ -23,6 +23,29 @@ module.exports = Class.extend({
     this.deleted( res );
   },
 
+  // token or password not match
+  unauthorized : function ( res ){
+    this.error(
+      new Error( 'unauthenticated' ),
+      res, 401
+    );
+  },
+
+  // the client has no right to access the resource
+  forbidden : function ( res ){
+    this.error(
+      new Error( 'forbidden' ),
+      res, 403
+    );
+  },
+
+  token_required : function ( res ){
+    this.error(
+      new Error( 'token required' ),
+      res, 400, '43'
+    );
+  },
+
 // -----------------------------------------------------------------------------
 
   token : function ( req, res, next ){
@@ -31,43 +54,32 @@ module.exports = Class.extend({
 
     if( !token ) return next();
 
-    Token.find_one_by_key( token, function ( err, token ){
+    Player.findOne({
+      fb_token : token
+    }, function ( err, player ){
       if( err ) return next( err );
-      if( token ){
-        req.token           = token;
-        req.session_user_id = token.user_id;
-
-        // hijack res.end, update the token when res.end invoke
-        var end = res.end;
-        res.end = function ( chunk, encoding ){
-          if( req.token ){
-            req.token.markModified( 'trunk' );
-            req.token.updated_at = Date.now();
-            req.token.save( function ( err, token, count ){
-              err && LOG.error( 500, res, err );
-            });
-          }
-
-          res.end = end;
-          res.end( chunk, encoding );
-        };
+      if( player ){
+        req.session_player_id = player._id;
+        req.session_player    = player;
       }
 
       next();
-    });
+    })
   },
 
   // we must call `token` before `authorized`
   is_authenticated : function ( req, res, next ){
-    var token = req.headers[ 'fb-token' ];
+    next();
 
-    if( !token ){
-      return this.token_required( res );
-    }
+    // var token = req.headers[ 'fb-token' ];
 
-    if( req.session_user_id ) return next();
+    // if( !token ){
+    //   return this.token_required( res );
+    // }
 
-    this.unauthorized( res );
+    // if( req.session_player_id ) return next();
+
+    // this.unauthorized( res );
   },
 
   is_validate : function ( req, res, next ){
@@ -76,18 +88,15 @@ module.exports = Class.extend({
     this.bad_req( res, req.form.getErrors());
   },
 
-  current_player : function ( req, res, next ){
-    var seld = this;
+  session_player : function ( req, res, next ){
+    var self = this;
 
-    Player.findById( req.form.id, function ( err, player ){
+    Player.findById( req.session_player_id, function ( err, player ){
       if( err )     return next( err );
-      if( !player ) return self.no_content( res );
+      if( !player ) return self.unauthorized( res );
 
-      req.current_player = player;
+      req.session_player = player;
       next();
-    })
-  },
-
-    next( err );
+    });
   }
 });

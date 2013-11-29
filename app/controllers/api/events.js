@@ -15,13 +15,16 @@ module.exports = Application.extend( validate, {
   create : function ( req, res, next ){
     var self = this;
     var args = {
-      desc  : req.form.desc,
-      point : req.form.point
+      title             : req.form.title,
+      desc              : req.form.desc,
+      point             : req.form.point,
+      session_player_id : req.session_player_id,
+      img_data          : req.files.img_data
     };
 
     Event.create( args, next,
       function ( event ){
-        self.ok( res, event );
+        self.created( res, event );
       });
   }
 });
