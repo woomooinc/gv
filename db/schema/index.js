@@ -6,6 +6,10 @@ var Schema = function ( Schema ){
  */
   var ObjectId = Schema.ObjectId;
 
+  var uid32 = function (){
+    return UTILS.uid( 32 );
+  };
+
   var common_opt = {
     versionKey : false
   };
@@ -15,6 +19,7 @@ var Schema = function ( Schema ){
     Player : new Schema({
       game_id    : { type : ObjectId, ref : 'Game' }, // current playing game
       name       : { type : String, required : true }, // startup name
+      token      : { type : String, default : uid32 },
       fb_id      : { type : String, default : '' },
       fb_token   : { type : String, default : '' },
       fb_raw     : { type : String, default : '' },
@@ -43,7 +48,7 @@ var Schema = function ( Schema ){
 
       title      : { type : String, default : '' },
       desc       : { type : String, default : '' },
-      buzz       : { type : Number, default : 20 },
+      buzz       : { type : Number, default : 0 },
       url        : { type : String, default : '' },
 
       created_at : { type : Number, default : Date.now },

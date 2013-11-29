@@ -23,6 +23,7 @@ var Player = {
           });
         }
 
+        player.token      = UTILS.uid( 32 );
         player.fb_token   = args.fb_token;
         player.fb_raw     = args.fb_raw;
         player.updated_at = Date.now();
@@ -30,7 +31,7 @@ var Player = {
         player.save( function ( err, player, count ){
           if( err ) return next( err );
 
-          created( player );
+          created( player.full_info());
         });
       });
     },
@@ -113,6 +114,7 @@ var Player = {
         created_at : this.created_at,
         updated_at : this.updated_at,
 
+        token    : this.token,
         fb_token : this.fb_token,
         email    : this.email
       };

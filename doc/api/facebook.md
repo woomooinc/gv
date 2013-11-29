@@ -17,9 +17,12 @@
       "_id"        : "4fe9fa8d2aef4710b9000001",
       "fb_id"      : "665040590",
       "fb_token"   : "AAAF5tgtfYZC0BAEwDZAZC8DhE6QOtzZB5laoPAy0XA1DadBZCW0dcq5dTITtVevvhZAcoRNwPXbjy1g3aJZBUgPqqdpWvL1FyX5YHgTYPevvgZDZD",
+      "token"      : "2e798a6d81f7235c10a93313dc222b5763a62ba6",
       "name"       : "ben",
       "email"      : "ben@gmail.com",
       "avatar"     : "//graph.facebook.com/me.ben.lin/picture",
+      "position"   : 0,
+      "buzz"       : 0,
       "created_at" : 1340734093017,
       "updated_at" : 1340734093017
     }
@@ -32,7 +35,7 @@
 - action  : api/fb#create
 - req     :
 - headers :
-- params :
+- params  :
 
 <!---->
 
@@ -51,9 +54,12 @@
       "_id"        : "4fe9fa8d2aef4710b9000001",
       "fb_id"      : "665040590",
       "fb_token"   : "AAAF5tgtfYZC0BAEwDZAZC8DhE6QOtzZB5laoPAy0XA1DadBZCW0dcq5dTITtVevvhZAcoRNwPXbjy1g3aJZBUgPqqdpWvL1FyX5YHgTYPevvgZDZD",
+      "token"      : "2e798a6d81f7235c10a93313dc222b5763a62ba6",
       "name"       : "ben",
       "email"      : "ben@gmail.com",
       "avatar"     : "//graph.facebook.com/me.ben.lin/picture",
+      "position"   : 0,
+      "buzz"       : 0,
       "created_at" : 1340734093017,
       "updated_at" : 1340734093017
     }

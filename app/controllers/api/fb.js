@@ -18,14 +18,10 @@ module.exports = Application.extend( validate, {
   create : function ( req, res, next ){
     var self = this;
 
-    Player.fb_user_info( req.form, next,
+    Player.fb_player_info( req.form, next,
       // custom error handle
-      function ( user ){
-        LOG.error( 400, res, user );
-        self.error(
-          new Error( 'facebook api error/down, might be token error' ),
-          res, 400, '017'
-        );
+      function ( err ){
+        self.error( err, res, 400, '017' );
       },
       // success
       function ( user ){
