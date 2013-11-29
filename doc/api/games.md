@@ -52,7 +52,7 @@
 ## PUT games
 
 - desc    : player waiting for game matching
-- action  : api/games#update
+- action  : api/games#create_or_update
 - req     :
 - headers :
 
