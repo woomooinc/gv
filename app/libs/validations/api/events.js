@@ -9,7 +9,7 @@ form.configure({
 module.exports = {
 
   validate_create : form(
-    field( 'fb_id' ).required(),
-    field( 'fb_token' ).required()
+    field( 'desc' ).required().maxLength( 1000, '08' ),
+    field( 'point' ).required().isInt().min( -100 ).max( 100 )
   )
 };

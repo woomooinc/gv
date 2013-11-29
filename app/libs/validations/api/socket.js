@@ -8,8 +8,7 @@ form.configure({
 
 module.exports = {
 
-  validate_create : form(
-    field( 'fb_id' ).required(),
-    field( 'fb_token' ).required()
+  validate_watch : form(
+    field( 'event' ).required()
   )
 };
