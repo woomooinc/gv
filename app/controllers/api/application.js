@@ -46,16 +46,30 @@ module.exports = Class.extend({
     );
   },
 
+  error : function ( err, res, status, msg ){
+    res.result     = err;
+    res.statusCode = status;
+
+    res.json( msg || status );
+  },
+
+  bad_req : function ( res, err ){
+    this.error(
+      err || new Error( 'bad request' ),
+      res, 400, err
+    );
+  },
+
 // -----------------------------------------------------------------------------
 
   token : function ( req, res, next ){
     var self  = this;
-    var token = req.headers[ 'fb-token' ];
+    var token = req.headers[ 'x-auth-token' ];
 
     if( !token ) return next();
 
     Player.findOne({
-      fb_token : token
+      token : token
     }, function ( err, player ){
       if( err ) return next( err );
       if( player ){
@@ -69,7 +83,7 @@ module.exports = Class.extend({
 
   // we must call `token` before `authorized`
   is_authenticated : function ( req, res, next ){
-    var token = req.headers[ 'fb-token' ];
+    var token = req.headers[ 'x-auth-token' ];
 
     if( !token ){
       return this.token_required( res );
@@ -84,6 +98,40 @@ module.exports = Class.extend({
     if( req.form.isValid ) return next();
 
     this.bad_req( res, req.form.getErrors());
+  },
+
+  has_file : function ( req, res, next ){
+    var img_regex = /^image\/bmp|image\/png|image\/gif|image\/jpeg|image\/jpg$/i;
+
+    if( req.files &&
+        req.files.img_data &&
+        req.files.img_data.name &&
+        req.files.img_data.size )
+    {
+      if( img_regex.test( req.files.img_data.type )) return next();
+    }
+
+    var errs = req.form.getErrors();
+
+    errs.img_data = [ '30' ];
+
+    this.bad_req( res, errs );
+  },
+
+  has_file_loose_check : function ( req, res, next ){
+    var img_regex = /^image\/bmp|image\/png|image\/gif|image\/jpeg|image\/jpg$/i;
+
+    if( req.files &&
+        req.files.img_data &&
+        req.files.img_data.name &&
+        req.files.img_data.size )
+    {
+      if( img_regex.test( req.files.img_data.type )) return next();
+    }
+
+    req.files = undefined;
+
+    next();
   },
 
   session_player : function ( req, res, next ){
