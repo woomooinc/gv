@@ -5,7 +5,7 @@
     GET    login/facebook
     POST   login/facebook
 
-### Player
+### Players
 
     GET    players/:id
     PUT    players/:id
