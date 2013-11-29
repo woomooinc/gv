@@ -41,7 +41,7 @@
         "created_at" : 1340734093017,
         "updated_at" : 1340734093017
       },
-      "dice"       : "IPO",
+      "dice"       : 3,
       "buzz"       : 89,
       "position"   : 22,
       "status"     : "end",
