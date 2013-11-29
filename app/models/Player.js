@@ -1,4 +1,5 @@
-var request = require( 'request' );
+var request  = require( 'request' );
+var mediator = require( LIB_DIR + 'mediator' );
 
 var Player = {
 
@@ -64,22 +65,6 @@ var Player = {
         : current_player.public_info();
 
       ok( player );
-    },
-
-    update_props : function ( args, next, ok ){
-      var session_player = args.session_player;
-      var src            = args.player;
-
-      if( src.name )     session_player.name     = src.name;
-      if( src.email )    session_player.email    = src.email;
-      if( src.buzz )     session_player.buzz     = src.buzz;
-      if( src.position ) session_player.position = src.position;
-
-      session_player.save( function ( err, player, count ){
-        if( err ) return next( err );
-
-        ok( player.public_info());
-      });
     }
   },
 
@@ -89,6 +74,17 @@ var Player = {
       return player_id !== undefined ?
         this._id.toString() === player_id.toString() :
         false;
+    },
+
+    limited_info : function (){
+      return {
+        _id        : this._id,
+        fb_id      : this.fb_id,
+        name       : this.name,
+        avatar     : this.avatar,
+        created_at : this.created_at,
+        updated_at : this.updated_at
+      };
     },
 
     public_info : function (){
@@ -108,7 +104,7 @@ var Player = {
     full_info : function (){
       return {
         _id        : this._id,
-        game_id    : this._id,
+        game_id    : this.game_id,
         fb_id      : this.fb_id,
         name       : this.name,
         avatar     : this.avatar,
@@ -120,6 +116,25 @@ var Player = {
         fb_token : this.fb_token,
         email    : this.email
       };
+    },
+
+    update_current_game : function ( game_id, next, success ){
+      this.game_id = game_id;
+      this.save( function ( err, game ){
+        if( err ) return next( err );
+
+        success( game );
+      });
+    },
+
+    dice : function ( min, max ){
+      return Math.random() * ( max - min ) + min;
+    },
+
+    new_pos : function ( number ){
+      var tmp = this.position + number;
+
+      return this.position = ( tmp > 29 ) ? tmp - 29 : tmp;
     }
   }
 };
