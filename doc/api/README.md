@@ -2,27 +2,20 @@
 
 ### Facebook
 
-    GET    login/facebook
+    GET    login/facebook // not in use for client
     POST   login/facebook
-
-### Players
-
-    GET    players/:id
-    PUT    players/:id
 
 ### Games
 
     GET    games/:id
     PUT    games
+    PUT    games/:id
+    GET    games/:id/watch
 
 ### Events
 
-    POST   events
+    POST   events // not in use for client
 
-### Player Events
+### Histories
 
-    GET    players/:player_id/events/:id
-
-### Socket
-
-    GET    socket
+    GET    histories/:id
