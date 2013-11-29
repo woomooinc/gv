@@ -15,18 +15,6 @@ module.exports = Application.extend( validate, {
     before( this.is_validate );
   },
 
-  current_player : function ( req, res, next ){
-    var seld = this;
-
-    Player.findById( req.form.id, function ( err, player ){
-      if( err )     return next( err );
-      if( !player ) return self.no_content( res );
-
-      req.current_player = player;
-      next();
-    })
-  },
-
   show : function ( req, res, next ){
     var self = this;
 
