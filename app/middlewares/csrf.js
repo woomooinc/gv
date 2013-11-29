@@ -5,5 +5,9 @@ module.exports = function ( app, express ){
     }
   });
 
-  return express.csrf();
+  return function ( req, res, next ){
+    return ( /^api.greedyvalley.com$/.test( req.headers.host ) ||
+             /^\/api\/[a-z]+/.test( req.url )) ?
+               next() : express.csrf()( req, res, next );
+  };
 };
