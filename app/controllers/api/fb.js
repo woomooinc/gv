@@ -7,7 +7,7 @@ module.exports = Application.extend( validate, {
 
   init : function ( before, after ){
     before( this.validate_create, { only : [ 'create' ]});
-    before( this.is_validate );
+    before( this.is_validate,     { only : [ 'create' ]} );
   },
 
   new : passport.authenticate( 'facebook', {

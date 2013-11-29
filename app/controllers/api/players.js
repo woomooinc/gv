@@ -10,7 +10,6 @@ module.exports = Application.extend( validate, {
 
     before( this.validate_show,   { only : [ 'show' ]});
     before( this.validate_update, { only : [ 'update' ]});
-
     before( this.current_player );
 
     before( this.is_validate );
