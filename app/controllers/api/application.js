@@ -69,17 +69,15 @@ module.exports = Class.extend({
 
   // we must call `token` before `authorized`
   is_authenticated : function ( req, res, next ){
-    next();
+    var token = req.headers[ 'fb-token' ];
 
-    // var token = req.headers[ 'fb-token' ];
+    if( !token ){
+      return this.token_required( res );
+    }
 
-    // if( !token ){
-    //   return this.token_required( res );
-    // }
+    if( req.session_player_id ) return next();
 
-    // if( req.session_player_id ) return next();
-
-    // this.unauthorized( res );
+    this.unauthorized( res );
   },
 
   is_validate : function ( req, res, next ){
