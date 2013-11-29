@@ -9,7 +9,8 @@ form.configure({
 module.exports = {
 
   validate_create : form(
-    field( 'desc' ).required().maxLength( 1000, '08' ),
+    field( 'title' ).required().maxLength( 100 ),
+    field( 'desc' ).required().maxLength( 1000 ),
     field( 'point' ).required().isInt().min( -100 ).max( 100 )
   )
 };

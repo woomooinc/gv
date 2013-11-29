@@ -9,7 +9,12 @@ form.configure({
 
 module.exports = {
 
-  validate_show : form(
+  validate_id : form(
     field( 'id' ).required().is( r.id, '01' )
-  )
+  ),
+
+  validate_watch : form(
+    field( 'id' ).required().is( r.id, '01' ),
+    field( 'type' ).required().is( r.watch_type, '01' )
+  ),
 };
