@@ -11,6 +11,6 @@ module.exports = {
   validate_create : form(
     field( 'title' ).required().maxLength( 100 ),
     field( 'desc' ).required().maxLength( 1000 ),
-    field( 'point' ).required().isInt().min( -100 ).max( 100 )
+    field( 'buzz' ).required().isInt().min( -100 ).max( 100 )
   )
 };

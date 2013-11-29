@@ -9,6 +9,7 @@ module.exports = Application.extend( validate, {
     before( this.is_authenticated );
 
     before( this.validate_create );
+    before( this.has_file_loose_check );
     before( this.is_validate );
   },
 
@@ -17,9 +18,9 @@ module.exports = Application.extend( validate, {
     var args = {
       title             : req.form.title,
       desc              : req.form.desc,
-      point             : req.form.point,
+      buzz              : req.form.buzz,
       session_player_id : req.session_player_id,
-      img_data          : req.files.img_data
+      img_data          : req.files && req.files.img_data
     };
 
     Event.create( args, next,
