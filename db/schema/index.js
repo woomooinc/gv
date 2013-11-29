@@ -32,7 +32,7 @@ var Schema = function ( Schema ){
       players        : [{ type : ObjectId, ref : 'Player' }],
       events         : [{ type : ObjectId, ref : 'Event' }],
       current_player : { type : ObjectId, required : true, ref : 'Player' },
-      end            : { type : Boolean, default : false },
+      status         : { type : String, default : 'idle' }, // idle, playing, end
 
       created_at     : { type : Number, default : Date.now },
       updated_at     : { type : Number, default : Date.now }
@@ -40,13 +40,30 @@ var Schema = function ( Schema ){
 
     Event : new Schema({
       player_id  : { type : ObjectId, ref : 'Player' }, // event creator
+
+      title      : { type : String, default : '' },
       desc       : { type : String, default : '' },
-      point      : { type : Number, default : 1 },
+      buzz       : { type : Number, default : 20 },
       url        : { type : String, default : '' },
 
       created_at : { type : Number, default : Date.now },
       updated_at : { type : Number, default : Date.now }
-    }, common_opt )
+    }, common_opt ),
+
+    History : new Schema({
+      game_id    : { type : ObjectId, ref : 'Game' },
+      player_id  : { type : ObjectId, ref : 'Player' },
+      event_id   : { type : ObjectId, ref : 'Event' },
+
+      dice       : { type : Number, required : true },
+      buzz       : { type : Number, required : true }, // 0 ~ 100
+      position   : { type : Number, required : true }, // 0 ~ 29
+      status     : { type : String, default : 'playing' }, // playing, end
+      // counter    : { type : Number, default : 0 }, // for not to miss any histories
+
+      created_at : { type : Number, default : Date.now },
+      updated_at : { type : Number, default : Date.now }
+    }, common_opt ),
   };
 
   // auto update `updated_at` on save
