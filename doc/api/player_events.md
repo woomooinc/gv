@@ -1,6 +1,6 @@
 # Events API
 
-## GET players/:play_id/events/:id
+## GET players/:player_id/events/:id
 
 - desc    : get the event detail for the specific player
 - action  : api/player_events#show
