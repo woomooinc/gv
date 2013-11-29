@@ -19,6 +19,9 @@ module.exports = Application.extend( validate, {
     Game.show({
       session_game : req.session_player
     }, next,
+    function (){
+      self.no_content( res );
+    },
     function ( game ){
       self.ok( res, game );
     });
@@ -27,7 +30,7 @@ module.exports = Application.extend( validate, {
   create_or_update : function ( req, res, next ){
     var self = this;
 
-    Game.update_prop({
+    Game.create_or_update({
       session_player : req.session_player
     }, next,
     function ( game ){
