@@ -22,7 +22,5 @@ module.exports = Class.extend(
 
     client.get( 'api/games/:game_id/watch', this.player_b_watch_for_game_start,  'games#wait' );
     client.get( 'api/games/:game_id/watch', this.player_b_watch_for_story_start, 'games#wait' );
-
-    // client.get( 'api/stories/:story_id', this.player_b_get_story_detail, 'games#common' );
   }
 });
