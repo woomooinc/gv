@@ -34,5 +34,21 @@ module.exports = {
     body.should.have.property( 'api' ).have.type( 'string' );
 
     next();
+  },
+
+  player_joined : function ( args, err, res, body, log, next ){
+    should.not.exist( err );
+
+    res.should.be.json;
+    res.should.have.status( 200 );
+
+    Object.keys( body ).should.have.lengthOf( 3 );
+    body.should.have.property( 'api' ).have.type( 'string' );
+    body.should.have.property( 'data' ).have.type( 'object' );
+    body.should.have.property( 'changed' ).have.type( 'object' );
+    body.data.should.have.property( 'game_id' ).with.lengthOf( 24 );
+    body.changed.should.have.property( 'player_id' ).with.lengthOf( 24 );
+
+    next();
   }
 };
