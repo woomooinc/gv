@@ -6,7 +6,7 @@ module.exports = function ( map ){
     api.post( 'login/facebook', 'fb#create' );
 
     api.get(  'games/:id',       'games#show' );
-    api.put(  'games',           'games#update_or_create' );
+    api.put(  'games',           'games#create_or_update' );
     api.put(  'games/:id',       'games#update' );
     api.get(  'games/:id/watch', 'games#watch' );
 
