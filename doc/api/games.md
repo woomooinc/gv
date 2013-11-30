@@ -165,7 +165,7 @@
 <!---->
 
     {
-      "type" : "game" // game || history
+      "type" : "game" // game || stroy
     }
 
 
@@ -186,8 +186,8 @@
     }
 
     {
-      "api"   : "histories/:history_id",
+      "api"   : "stories/:stroy_id",
       "data"  : {
-        "history_id" : "4fe9fa8d2aef4710b9000001"
+        "stroy_id" : "4fe9fa8d2aef4710b9000001"
       }
     }

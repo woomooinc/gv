@@ -16,6 +16,6 @@
 
     POST   events // not in use for client
 
-### Histories
+### Stories
 
-    GET    histories/:id
+    GET    stories/:id

@@ -34,11 +34,11 @@ If there is 5 people, start watch for people to send command
 
 start playing, send command
 
-### GET    histories/:id
+### GET    stories/:id
 
-get event histories
+get event stories
 
 ### GET    games/:id/watch
 
-keep watching for histories
+keep watching for stories
 

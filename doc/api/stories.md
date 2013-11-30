@@ -1,9 +1,9 @@
-# Histories API
+# Stories API
 
-## GET histories/:id
+## GET stories/:id
 
 - desc    : get the event detail for the specific player
-- action  : api/histories#show
+- action  : api/stories#show
 - req     :
 - headers :
 

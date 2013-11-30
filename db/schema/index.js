@@ -55,7 +55,7 @@ var Schema = function ( Schema ){
       updated_at : { type : Number, default : Date.now }
     }, common_opt ),
 
-    History : new Schema({
+    Story : new Schema({
       game_id    : { type : ObjectId, ref : 'Game' },
       player_id  : { type : ObjectId, ref : 'Player' },
       event_id   : { type : ObjectId, ref : 'Event' },
@@ -64,7 +64,7 @@ var Schema = function ( Schema ){
       buzz       : { type : Number, required : true }, // 0 ~ 100
       position   : { type : Number, required : true }, // 0 ~ 29
       status     : { type : String, default : 'playing' }, // playing, end
-      // counter    : { type : Number, default : 0 }, // for not to miss any histories
+      // counter    : { type : Number, default : 0 }, // for not to miss any stories
 
       created_at : { type : Number, default : Date.now },
       updated_at : { type : Number, default : Date.now }

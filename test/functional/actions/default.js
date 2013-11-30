@@ -44,6 +44,8 @@ module.exports = Class.extend({
     client.put( 'api/games', this.player_b_find_or_create_game_room, 'games#common' );
 
     client.put( 'api/games/:game_id', this.player_b_play, 'games#common' );
+
+    client.get( 'api/games/:game_id/watch', this.player_a_watch_for_game, 'games#wait' );
   },
 
   player_a_fb_login : function (){

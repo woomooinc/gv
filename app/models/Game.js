@@ -68,7 +68,7 @@ var Game = {
     },
 
     update_prop : function ( args, next, no_content, forbidden, ok ){
-      var History           = Model( 'History' );
+      var Story             = Model( 'Story' );
       var session_player    = args.session_player;
       var session_player_id = session_player._id;
       var game_id           = args.game_id;
@@ -87,7 +87,7 @@ var Game = {
           var event   = game.events[ new_pos ];
           var buzz    = session_player.new_buzz( event.buzz );
 
-          var history = new History({
+          var stroy = new Story({
             game_id   : game_id,
             player_id : session_player_id,
             event_id  : event._id,
@@ -98,7 +98,7 @@ var Game = {
 
           if( buzz > 70 && event.title === 'IPO' ){
             // win and end the game
-            history.status = 'end';
+            stroy.status = 'end';
             game.players = [];
           }else if( buzz < 0 ){
             // lost and quit
@@ -108,15 +108,15 @@ var Game = {
           game.save( function ( err, game ){
             if( err ) return next( err );
 
-            history.save( function ( err, history ){
+            stroy.save( function ( err, stroy ){
               if( err ) return next( err );
 
               ok( game );
               // notify players in this game pool
-              mediator.emit( 'history-' + game._id, {
-                api  : 'histories/:history_id',
+              mediator.emit( 'stroy-' + game._id, {
+                api  : 'stories/:stroy_id',
                 data : {
-                  history_id : history._id
+                  stroy_id : stroy._id
                 }
               });
             })

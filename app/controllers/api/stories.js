@@ -1,6 +1,6 @@
 var Application = require( './application' );
-var validate    = require( LIB_DIR + 'validations/api/histories' );
-var History     = Model( 'History' );
+var validate    = require( LIB_DIR + 'validations/api/stories' );
+var Story       = Model( 'Story' );
 
 module.exports = Application.extend( validate, {
 
@@ -15,15 +15,15 @@ module.exports = Application.extend( validate, {
   show : function ( req, res, next ){
     var self = this;
     var args = {
-      history_id : req.form.id
+      stroy_id : req.form.id
     };
 
-    History.show( args, next,
+    Story.show( args, next,
       function (){
         self.no_content( res );
       },
-      function ( history ){
-        self.ok( res, history );
+      function ( stroy ){
+        self.ok( res, stroy );
       });
   }
 });

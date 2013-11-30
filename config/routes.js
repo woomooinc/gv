@@ -12,7 +12,7 @@ module.exports = function ( map ){
 
     api.post( 'events', 'events#create' );
 
-    api.get(  'histories/:id', 'histories#show' );
+    api.get(  'stories/:id', 'stories#show' );
 
   });
 };
