@@ -50,6 +50,7 @@ var Player = {
           var player = JSON.parse( body );
 
           player.fb_raw   = body;
+          player.fb_id    = args.fb_id;
           player.fb_token = args.fb_token;
 
           if( !player.email ) return failed( player );
