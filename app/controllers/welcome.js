@@ -6,5 +6,11 @@ module.exports = Class.extend({
     res.render( 'welcome/index', {
       layout : false
     });
-  }
+  },
+
+  game : function ( req, res, next ){
+    res.render( 'welcome/game', {
+      layout : false
+    });
+  },
 });
