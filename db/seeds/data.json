@@ -1,0 +1,137 @@
+[{
+  "title" : "Something bad",
+  "desc"  : "Co-founder of {{name}} quited the company",
+  "buzz"  : -30
+},
+
+{
+  "title" : "Something bad",
+  "desc"  : "{{name}} fired 50 more people this week",
+  "buzz"  : -30
+},
+
+{
+  "title" : "Something bad",
+  "desc"  : "Kanye West suing Co-founder of {{name}}",
+  "buzz"  : -10
+},
+
+{
+  "title" : "Great news",
+  "desc"  : "Ashton Kutcher join {{name}} as an engineer",
+  "buzz"  : 15
+},
+
+{
+  "title" : "Great news",
+  "desc"  : "Justin Bieber is a investor of {{name}}",
+  "buzz"  : 10
+},
+
+{
+  "title" : "Great news",
+  "desc"  : "Jack Dorsey screwed his friends at Twitter",
+  "buzz"  : 5
+},
+
+{
+  "title" : "Great news",
+  "desc"  : "Dave Morin laid off 20% of Path employees today",
+  "buzz"  : 5
+},
+
+{
+  "title" : "Something bad",
+  "desc"  : "{{name}}'s CEO takes fire over All-Male board of directors",
+  "buzz"  : -15
+},
+
+{
+  "title" : "Something bad",
+  "desc"  : "Ashton and Demi's Startup {{name}} is as dead as their marriage",
+  "buzz"  : -70
+},
+
+{
+  "title" : "Something bad",
+  "desc"  : "Facebook's summer party, better than {{name}}",
+  "buzz"  : -5
+},
+
+{
+  "title" : "Something good",
+  "desc"  : "Tumblr: Oops, we might have blown your password",
+  "buzz"  : 10
+},
+
+{
+  "title" : "Great news",
+  "desc"  : "Silicon Valley's stupid name problem, visualized",
+  "buzz"  : 5
+},
+
+{
+  "title" : "Something bad",
+  "desc"  : "Facebook, Google, {{name}}, and more giving your data directly to NSA ",
+  "buzz"  : -10
+},
+
+{
+  "title" : "Something bad",
+  "desc"  : "{{name}} Founders 'Swing for the Fences'?",
+  "buzz"  : -10
+},
+
+{
+  "title" : "Something bad",
+  "desc"  : "{{name}} Creative Director quits",
+  "buzz"  : -15
+},
+
+{
+  "title" : "Great news",
+  "desc"  : "{{name}} Founder posts $1.2 Million online banking screenshot",
+  "buzz"  : 30
+},
+
+{
+  "title" : "Great news",
+  "desc"  : "Snapchat Leaked: This is your online nightmare",
+  "buzz"  : 10
+},
+
+{
+  "title" : "Something bad",
+  "desc"  : "{{name}} Email auto-replies of a Super VC",
+  "buzz"  : -15
+},
+
+{
+  "title" : "Great news",
+  "desc"  : "Facebook CEO slammed 'Dumb' users who trusted him in college",
+  "buzz"  : 15
+},
+
+{
+  "title" : "Something bad",
+  "desc"  : "{{name}}'s investor is totally gay, people'",
+  "buzz"  : -10
+},
+
+{
+  "title" : "Great news",
+  "desc"  : "{{name}} millionaire Snags a Victoria's Secret girlfriend",
+  "buzz"  : 5
+},
+
+{
+  "title" : "Something bad",
+  "desc"  : "{{name}}'s engineer clean up the user deta'",
+  "buzz"  : -40
+},
+
+{
+  "title" : "IPO",
+  "desc"  : "{{name}} finally hits its BIG success",
+  "buzz"  : 0
+}]
