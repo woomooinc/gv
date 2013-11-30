@@ -271,7 +271,6 @@
     this.updateGameStatus();
 
     var body = selectGameViewport();
-    body.style.backgroundColor = "#CCCCCC";
     var restartBtn = body.querySelector(".restart-btn");
     restartBtn.disabled = false;
     var actionBtn = body.querySelector(".action-btn");
@@ -280,7 +279,6 @@
 
   Game.prototype.startGame = function () {
     var body = selectGameViewport();
-    body.style.backgroundColor = "black";
     var actionBtn = body.querySelector(".action-btn");
     actionBtn.disabled = false;
 
