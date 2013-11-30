@@ -19,10 +19,6 @@ css:
       - common/nav
       - common/flash
       - common/footer
-  scaffold:
-    site:
-      - scaffold
-
 js:
   # js group name
   common:
