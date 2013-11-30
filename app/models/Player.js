@@ -131,13 +131,17 @@ var Player = {
     },
 
     dice : function ( min, max ){
-      return Math.random() * ( max - min ) + min;
+      return Math.floor( Math.random() * max ) + min;
     },
 
     new_pos : function ( number ){
       var tmp = this.position + number;
 
       return this.position = ( tmp > 29 ) ? tmp - 29 : tmp;
+    },
+
+    new_buzz : function ( buzz ){
+      return this.buzz = this.buzz + buzz;
     }
   }
 };

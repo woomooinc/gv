@@ -40,8 +40,10 @@ module.exports = Class.extend({
     client.post( 'api/events', this.player_a_create_event,             'event#create' );
     client.post( 'api/events', this.player_b_create_event_with_no_img, 'event#create_with_no_img' );
 
-    client.put( 'api/games', this.player_a_find_or_create_game_room, 'games#find_or_create_room' );
-    client.put( 'api/games', this.player_b_find_or_create_game_room, 'games#find_or_create_room' );
+    client.put( 'api/games', this.player_a_find_or_create_game_room, 'games#common' );
+    client.put( 'api/games', this.player_b_find_or_create_game_room, 'games#common' );
+
+    client.put( 'api/games/:game_id', this.player_b_play, 'games#common' );
   },
 
   player_a_fb_login : function (){
@@ -105,6 +107,18 @@ module.exports = Class.extend({
         'x-auth-token' : fixture( 'player_b' ).token
       },
       json : {}
+    };
+  },
+
+  player_b_play : function (){
+    return {
+      headers : {
+        'x-auth-token' : fixture( 'player_b' ).token
+      },
+      json : {},
+      params : {
+        game_id : fixture( 'game' )._id
+      }
     };
   }
 });

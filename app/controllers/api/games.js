@@ -64,9 +64,9 @@ module.exports = Application.extend( validate, {
     };
 
     Game.create_or_update( args, next,
-    function ( game ){
-      self.ok( res, game );
-    });
+      function ( game ){
+        self.ok( res, game );
+      });
   },
 
   // receive command
@@ -78,6 +78,12 @@ module.exports = Application.extend( validate, {
     };
 
     Game.update_prop( args, next,
+      function (){
+        self.no_content( res );
+      },
+      function (){
+        self.forbidden( res );
+      },
       function ( game ){
         self.ok( res, game );
       });

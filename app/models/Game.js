@@ -67,7 +67,7 @@ var Game = {
       });
     },
 
-    update_prop : function ( args, next, no_content, ok ){
+    update_prop : function ( args, next, no_content, forbidden, ok ){
       var History           = Model( 'History' );
       var session_player    = args.session_player;
       var session_player_id = session_player._id;

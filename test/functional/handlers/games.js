@@ -3,7 +3,7 @@ var fixture = UTILS.fixture;
 
 module.exports = {
 
-  find_or_create_room : function ( args, err, res, body, log, next ){
+  common : function ( args, err, res, body, log, next ){
     should.not.exist( err );
 
     res.should.be.json;
@@ -22,5 +22,5 @@ module.exports = {
 
     fixture( 'game',  body );
     next();
-  },
+  }
 };
