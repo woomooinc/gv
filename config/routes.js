@@ -1,5 +1,6 @@
 module.exports = function ( map ){
-  map.get( '/','welcome#index' );
+  map.get( '/',     'welcome#index' );
+  map.get( '/game', 'welcome#game' );
 
   map.namespace( 'api', function ( api ){
     api.get(  'login/facebook', 'fb#new' );
