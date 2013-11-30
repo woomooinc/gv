@@ -123,10 +123,10 @@ var Player = {
 
     update_current_game : function ( game_id, next, success ){
       this.game_id = game_id;
-      this.save( function ( err, game ){
+      this.save( function ( err, player ){
         if( err ) return next( err );
 
-        success( game );
+        success( player );
       });
     },
 

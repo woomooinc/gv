@@ -9,38 +9,39 @@ module.exports = Class.extend({
     client.post( 'api/login/facebook', this.player_a_fb_login, 'fb#client_login' );
     client.post( 'api/login/facebook', this.player_b_fb_login, 'fb#client_login' );
 
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event,             'event#create' );
-    client.post( 'api/events', this.create_event_with_no_img, 'event#create_with_no_img' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_a_create_event,             'event#create' );
+    client.post( 'api/events', this.player_b_create_event_with_no_img, 'event#create_with_no_img' );
 
-    client.post( 'api/events', this.create_event_with_no_img, 'event#create_with_no_img' );
+    client.put( 'api/games', this.player_a_find_or_create_game_room, 'games#find_or_create_room' );
+    client.put( 'api/games', this.player_b_find_or_create_game_room, 'games#find_or_create_room' );
   },
 
   player_a_fb_login : function (){
@@ -61,7 +62,7 @@ module.exports = Class.extend({
     };
   },
 
-  create_event : function (){
+  player_a_create_event : function (){
     var src  = fixture( 'ori_event' );
     var body = lib.multipart( src );
 
@@ -80,7 +81,7 @@ module.exports = Class.extend({
     };
   },
 
-  create_event_with_no_img : function (){
+  player_b_create_event_with_no_img : function (){
     return {
       headers : {
         'x-auth-token' : fixture( 'player_b' ).token
@@ -88,4 +89,22 @@ module.exports = Class.extend({
       json : fixture( 'ori_event' )
     };
   },
+
+  player_a_find_or_create_game_room : function (){
+    return {
+      headers : {
+        'x-auth-token' : fixture( 'player_a' ).token
+      },
+      json : {}
+    };
+  },
+
+  player_b_find_or_create_game_room : function (){
+    return {
+      headers : {
+        'x-auth-token' : fixture( 'player_b' ).token
+      },
+      json : {}
+    };
+  }
 });

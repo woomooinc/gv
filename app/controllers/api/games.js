@@ -14,7 +14,7 @@ module.exports = Application.extend( validate, {
 
     before( this.validate_id,    { only : [ 'show', 'update' ]});
     before( this.validate_watch, { only : [ 'watch' ]});
-    before( this.is_validate );
+    before( this.is_validate,    { only : [ 'show', 'update', 'watch' ]});
 
     before( this.events, { only : [ 'create_or_update' ]});
   },
@@ -85,7 +85,7 @@ module.exports = Application.extend( validate, {
 
   watch : function ( req, res, next ){
     var self = this;
-    var name = req.form.type + '-' + req.form.game_id;
+    var name = req.form.type + '-' + req.form.id;
 
     // watch changes
     mediator.once( name, function ( msg ){

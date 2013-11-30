@@ -22,41 +22,46 @@ var Game = {
 
     // join a game
     create_or_update : function ( args, next, ok ){
+      var self              = this;
       var session_player    = args.session_player;
       var session_player_id = session_player._id;
 
       this.findOne({
         $where : 'this.players.length < 5'
       }).
-      populate( 'players', '-email -fb_token -fb_raw' ).
-      populate( 'events' ).
       exec( function ( err, game ){
         if( err ) return next( err );
 
         if( !game ){
-          game = new this({
+          game = new self({
             events         : args.events,
-            current_player : player_id
+            current_player : session_player_id
           });
         }
 
-        game.players.addToSet( player_id );
+        game.players.addToSet( session_player_id );
         game.save( function ( err, game ){
           if( err ) return next( err );
 
-          session_player.update_current_game( game._id, function ( game ){
+          session_player.update_current_game( game._id, next, function ( player ){
 
-            ok( game );
-            // notify players in this game pool
-            mediator.emit( 'game-' + game._id, {
-              api  : 'game/:game_id',
-              data : {
-                game_id : game_id
-              },
-              changed : {
-                player_id : player_id
-              }
-            });
+            self.
+              findById( game._id ).
+              populate( 'players', '-email -fb_token -fb_raw -token' ).
+              populate( 'events' ).
+              exec( function ( err, game ){
+                ok( game );
+                // notify players in this game pool
+                mediator.emit( 'game-' + game._id, {
+                  api  : 'game/:game_id',
+                  data : {
+                    game_id : game._id
+                  },
+                  changed : {
+                    player_id : session_player_id
+                  }
+                });
+              });
           });
         });
       });
