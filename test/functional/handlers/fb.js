@@ -8,11 +8,10 @@ module.exports = {
     res.should.be.json;
     res.should.have.status( 201 );
 
-    Object.keys( body ).should.have.lengthOf( 11 );
-
     body.should.have.property( '_id' ).with.lengthOf( 24 );
     body.should.have.property( 'fb_id' );
     body.should.have.property( 'fb_token' ).have.type( 'string' );
+    body.should.have.property( 'token' ).have.type( 'string' );
     body.should.have.property( 'name' ).have.type( 'string' );
     body.should.have.property( 'email' ).have.type( 'string' );
     body.should.have.property( 'avatar' ).have.type( 'string' );
@@ -21,7 +20,7 @@ module.exports = {
     body.created_at.toString().should.have.lengthOf( 13 );
     body.updated_at.toString().should.have.lengthOf( 13 );
 
-    UTILS.fixture( 'user',  body );
+    UTILS.fixture( args.player, body );
     next();
   }
 };

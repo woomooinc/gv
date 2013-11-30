@@ -6,7 +6,8 @@ var fixture = UTILS.fixture;
 module.exports = Class.extend({
 
   init : function ( client ){
-    client.post( 'api/login/facebook', this.facebook_login, 'fb#client_login' );
+    client.post( 'api/login/facebook', this.player_a_fb_login, 'fb#client_login' );
+    client.post( 'api/login/facebook', this.player_b_fb_login, 'fb#client_login' );
 
     client.post( 'api/events', this.create_event,             'event#create' );
     client.post( 'api/events', this.create_event,             'event#create' );
@@ -42,9 +43,21 @@ module.exports = Class.extend({
     client.post( 'api/events', this.create_event_with_no_img, 'event#create_with_no_img' );
   },
 
-  facebook_login : function (){
+  player_a_fb_login : function (){
     return {
-      json : fixture( 'someone' )
+      json : fixture( 'ori_player_a' ),
+      args : {
+        player : 'player_a'
+      }
+    };
+  },
+
+  player_b_fb_login : function (){
+    return {
+      json : fixture( 'ori_player_b' ),
+      args : {
+        player : 'player_b'
+      }
     };
   },
 
@@ -60,7 +73,7 @@ module.exports = Class.extend({
 
     return {
       headers : {
-        'x-auth-token' : fixture( 'user' ).token,
+        'x-auth-token' : fixture( 'player_a' ).token,
         'content-type' : 'multipart/form-data'
       },
       multipart : body
@@ -70,7 +83,7 @@ module.exports = Class.extend({
   create_event_with_no_img : function (){
     return {
       headers : {
-        'x-auth-token' : fixture( 'user' ).token
+        'x-auth-token' : fixture( 'player_b' ).token
       },
       json : fixture( 'ori_event' )
     };
