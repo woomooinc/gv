@@ -42,10 +42,13 @@ module.exports = Class.extend({
 
     client.put( 'api/games', this.player_a_find_or_create_game_room, 'games#common' );
     client.put( 'api/games', this.player_b_find_or_create_game_room, 'games#common' );
+    client.get( 'api/games/:game_id', this.player_b_get_game_detail, 'games#common' );
 
     client.put( 'api/games/:game_id', this.player_b_play, 'games#common' );
 
     client.get( 'api/games/:game_id/watch', this.player_b_watch_for_game_start, 'games#wait' );
+
+    // client.get( 'api/stories/:story_id', this.player_b_get_story_detail, 'games#common' );
   },
 
   player_a_fb_login : function (){
@@ -109,6 +112,18 @@ module.exports = Class.extend({
         'x-auth-token' : fixture( 'player_b' ).token
       },
       json : true
+    };
+  },
+
+  player_b_get_game_detail : function (){
+    return {
+      headers : {
+        'x-auth-token' : fixture( 'player_b' ).token
+      },
+      json : true,
+      params : {
+        game_id : fixture( 'game' )._id
+      }
     };
   },
 
