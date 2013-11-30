@@ -95,7 +95,7 @@ module.exports = Application.extend( validate, {
 
     // watch changes
     mediator.once( name, function ( msg ){
-      self.ok( msg );
+      self.ok( res, msg );
     });
 
     // response every 30 sec even there is no new msg

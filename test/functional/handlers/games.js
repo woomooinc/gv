@@ -22,5 +22,17 @@ module.exports = {
 
     fixture( 'game',  body );
     next();
+  },
+
+  wait : function ( args, err, res, body, log, next ){
+    should.not.exist( err );
+
+    res.should.be.json;
+    res.should.have.status( 200 );
+
+    Object.keys( body ).should.have.lengthOf( 1 );
+    body.should.have.property( 'api' ).have.type( 'string' );
+
+    next();
   }
 };

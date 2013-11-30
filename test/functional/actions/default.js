@@ -45,7 +45,7 @@ module.exports = Class.extend({
 
     client.put( 'api/games/:game_id', this.player_b_play, 'games#common' );
 
-    client.get( 'api/games/:game_id/watch', this.player_a_watch_for_game, 'games#wait' );
+    client.get( 'api/games/:game_id/watch', this.player_b_watch_for_game_start, 'games#wait' );
   },
 
   player_a_fb_login : function (){
@@ -99,7 +99,7 @@ module.exports = Class.extend({
       headers : {
         'x-auth-token' : fixture( 'player_a' ).token
       },
-      json : {}
+      json : true
     };
   },
 
@@ -108,7 +108,7 @@ module.exports = Class.extend({
       headers : {
         'x-auth-token' : fixture( 'player_b' ).token
       },
-      json : {}
+      json : true
     };
   },
 
@@ -117,7 +117,22 @@ module.exports = Class.extend({
       headers : {
         'x-auth-token' : fixture( 'player_b' ).token
       },
-      json : {},
+      json : true,
+      params : {
+        game_id : fixture( 'game' )._id
+      }
+    };
+  },
+
+  player_b_watch_for_game_start : function (){
+    return {
+      headers : {
+        'x-auth-token' : fixture( 'player_b' ).token
+      },
+      qs : {
+        type : 'game'
+      },
+      json : true,
       params : {
         game_id : fixture( 'game' )._id
       }
